@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:todo_app/util/dialog_box.dart';
 import 'package:todo_app/util/todo_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,11 +19,20 @@ class _HomePageState extends State<HomePage> {
     ["Do exercise", false]
   ];
 
-  //method
+  //checkbox was tapped
   void checkBoxChanged(bool? value, int index) {
     setState(() {
       toDoList[index][1] = !toDoList[index][1];
     });
+  }
+
+  //Create new Task method
+  void createNewTask() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return DialogBox();
+        });
   }
 
   @override
@@ -38,7 +48,7 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: createNewTask,
         child: Icon(Icons.add),
       ),
       body: ListView.builder(
