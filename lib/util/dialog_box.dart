@@ -1,11 +1,24 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, prefer_typing_uninitialized_variables
 
 import 'package:flutter/material.dart';
 import 'package:todo_app/util/my_button.dart';
 
 class DialogBox extends StatelessWidget {
   final controller;
-  const DialogBox({super.key, required this.controller});
+  VoidCallback onSave;
+  VoidCallback onCancel;
+
+
+  DialogBox(
+      {super.key,
+      required this.controller,
+      required this.onSave,
+      required this.onCancel});
+
+  // mehod for onsave
+
+  //method for oncance
+  
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +40,14 @@ class DialogBox extends StatelessWidget {
 
             //buttons -> save + cancel
             Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-              MyButton(text: "Save", onPressed: () {}),
+              MyButton(text: "Save", onPressed:onSave),
+
               const SizedBox(
                 width: 8,
               ),
 
               //cancel button
-              MyButton(text: "Cancel", onPressed: () {})
+              MyButton(text: "Cancel", onPressed: onCancel)
             ])
           ],
         ),
